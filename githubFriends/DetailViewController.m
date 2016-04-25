@@ -13,6 +13,7 @@
 //NSMUTableData is specific type that can hold this information coming in
 @property NSMutableData * recievedData;
 
+
 @end
 
 @implementation DetailViewController
@@ -36,7 +37,7 @@
         //set input from user to new varaible - username
         NSString * username = [self.detailItem description];
         //create string which puts together api address and username
-        NSString * urlString = [NSString stringWithFormat:@"https://api.github.com/users/%@", username];
+        NSString * urlString = [NSString stringWithFormat:@"https://api.github.com/users/%@/repos", username];
         //create NS URL from string
         NSURL * url = [NSURL URLWithString:urlString];
         
@@ -87,6 +88,8 @@ didCompleteWithError:(nullable NSError *)error{
         
         NSDictionary * jsonResponse = [NSJSONSerialization JSONObjectWithData:self.recievedData options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@", [jsonResponse description]);
+        NSLog(@"%lu", (unsigned long)[jsonResponse count]);
+       // _numberOfRepos = [NSString stringWithFormat:@"Number of Repositories: %lu",(unsigned long)[jsonResponse count]];
     }
 }
 
