@@ -20,8 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    self.objects = [[NSMutableArray alloc] init];
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(GotToNewItemViewController:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
@@ -45,6 +47,7 @@
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -57,6 +60,39 @@
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
 }
+
+-(IBAction)GotToNewItemViewController:(id)sender{
+    //create instance of ui alert controller and amend settings
+    UIAlertController *alertController = [UIAlertController
+    alertControllerWithTitle: @"Add a Friend"
+                    message:@"Enter a valid github username"
+            preferredStyle:UIAlertControllerStyleAlert];
+    //format information while presenting
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Username";
+    }];
+    
+    UIAlertAction * okAlert = [UIAlertAction actionWithTitle: @"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
+    UITextField* textField = alertController.textFields.lastObject;
+    NSLog(@"%@", textField.text);
+    [_objects addObject:textField.text];
+    
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_objects count]-1 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+    
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle: @"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action) {
+        NSLog(@"User Canceled");
+
+}];
+    [alertController addAction:okAlert];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController: alertController animated:YES completion: nil];
+}
+
+
 
 #pragma mark - Table View
 
