@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FA2A1091CCFB1F80080129B /* RepoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2A1081CCFB1F80080129B /* RepoTableViewCell.m */; };
 		9FAAF4F91CCE56AD00E65C6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAF4F81CCE56AD00E65C6B /* main.m */; };
 		9FAAF4FC1CCE56AD00E65C6B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAF4FB1CCE56AD00E65C6B /* AppDelegate.m */; };
 		9FAAF4FF1CCE56AD00E65C6B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAF4FE1CCE56AD00E65C6B /* MasterViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9FA2A1071CCFB1F80080129B /* RepoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTableViewCell.h; sourceTree = "<group>"; };
+		9FA2A1081CCFB1F80080129B /* RepoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTableViewCell.m; sourceTree = "<group>"; };
 		9FAAF4F41CCE56AD00E65C6B /* githubFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = githubFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FAAF4F81CCE56AD00E65C6B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FAAF4FA1CCE56AD00E65C6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +71,8 @@
 				9FAAF5121CCEB0D200E65C6B /* Friend.m */,
 				9FAAF4FA1CCE56AD00E65C6B /* AppDelegate.h */,
 				9FAAF4FB1CCE56AD00E65C6B /* AppDelegate.m */,
+				9FA2A1071CCFB1F80080129B /* RepoTableViewCell.h */,
+				9FA2A1081CCFB1F80080129B /* RepoTableViewCell.m */,
 				9FAAF4FD1CCE56AD00E65C6B /* MasterViewController.h */,
 				9FAAF4FE1CCE56AD00E65C6B /* MasterViewController.m */,
 				9FAAF5001CCE56AD00E65C6B /* DetailViewController.h */,
@@ -161,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAAF4FC1CCE56AD00E65C6B /* AppDelegate.m in Sources */,
+				9FA2A1091CCFB1F80080129B /* RepoTableViewCell.m in Sources */,
 				9FAAF5131CCEB0D200E65C6B /* Friend.m in Sources */,
 				9FAAF4FF1CCE56AD00E65C6B /* MasterViewController.m in Sources */,
 				9FAAF4F91CCE56AD00E65C6B /* main.m in Sources */,

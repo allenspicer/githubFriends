@@ -61,7 +61,7 @@
 - (void)getData {
     // Update the user interface for the detail item.
     
-    //set input from user to new variable - username
+    //set input from user to new variable called username
     NSString * username = [self.objects lastObject];
     
     //create string which puts together api address and username
@@ -112,6 +112,7 @@
     //format information while presenting
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"Username";
+        
     }];
     
     UIAlertAction * okAlert = [UIAlertAction actionWithTitle: @"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
@@ -190,11 +191,8 @@
 didCompleteWithError:(nullable NSError *)error{
     
     if (!error) {
-        
         NSDictionary * jsonResponse = [NSJSONSerialization JSONObjectWithData:self.recievedData options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@", [jsonResponse description]);
-
-
         }
         
     }

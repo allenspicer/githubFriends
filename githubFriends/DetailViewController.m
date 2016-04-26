@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "Friend.h"
+#import "RepoTableViewCell.h"
 
 @interface DetailViewController () <NSURLSessionDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -66,7 +67,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"friendIdentifier"];
+    [self.tableView registerClass:[RepoTableViewCell class] forCellReuseIdentifier:@"friendIdentifier"];
     
     [self.view addSubview:self.tableView];
 
@@ -145,15 +146,7 @@ didCompleteWithError:(nullable NSError *)error{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendIdentifier" forIndexPath:indexPath];
     
-    
     cell.textLabel.text = self.repoArray[indexPath.row][@"name"];
-    
-    
-    // Configure the cell...
-    
-//    Friend *aFriend = self.[indexPath.row];
-//    cell.textLabel.text = aFriend.repoName;
-   // cell.detailTextLabel.text = aFriend.id;
     
     return cell;
 }
