@@ -14,7 +14,10 @@
 //NSMUTableData is specific type that can hold this information coming in
 @property NSMutableData * recievedData;
 @property NSMutableArray *objects;
+@property NSMutableArray *repositories;
 @end
+
+
 
 @implementation MasterViewController
 
@@ -91,6 +94,12 @@
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
+
+        //empty recievedData so that it can be used in Detail View
+            self.recievedData = nil;
+
+        
+        
     }
 }
 
@@ -174,18 +183,22 @@
     }
 }
 
+
+
 //figure out if the download happened with or without an error
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error{
     
     if (!error) {
-        //if no error, say successful
-        // NSLog(@"Download Successful! %@", [self.recievedData description]);
         
         NSDictionary * jsonResponse = [NSJSONSerialization JSONObjectWithData:self.recievedData options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@", [jsonResponse description]);
+
+
+        }
+        
     }
-}
+
 
 //magic code
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler

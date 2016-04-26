@@ -14,6 +14,7 @@
 		9FAAF5051CCE56AD00E65C6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FAAF5031CCE56AD00E65C6B /* Main.storyboard */; };
 		9FAAF5071CCE56AD00E65C6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FAAF5061CCE56AD00E65C6B /* Assets.xcassets */; };
 		9FAAF50A1CCE56AD00E65C6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FAAF5081CCE56AD00E65C6B /* LaunchScreen.storyboard */; };
+		9FAAF5131CCEB0D200E65C6B /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAF5121CCEB0D200E65C6B /* Friend.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		9FAAF5061CCE56AD00E65C6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FAAF5091CCE56AD00E65C6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FAAF50B1CCE56AD00E65C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FAAF5111CCEB0D200E65C6B /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		9FAAF5121CCEB0D200E65C6B /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		9FAAF4F61CCE56AD00E65C6B /* githubFriends */ = {
 			isa = PBXGroup;
 			children = (
+				9FAAF5111CCEB0D200E65C6B /* Friend.h */,
+				9FAAF5121CCEB0D200E65C6B /* Friend.m */,
 				9FAAF4FA1CCE56AD00E65C6B /* AppDelegate.h */,
 				9FAAF4FB1CCE56AD00E65C6B /* AppDelegate.m */,
 				9FAAF4FD1CCE56AD00E65C6B /* MasterViewController.h */,
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAAF4FC1CCE56AD00E65C6B /* AppDelegate.m in Sources */,
+				9FAAF5131CCEB0D200E65C6B /* Friend.m in Sources */,
 				9FAAF4FF1CCE56AD00E65C6B /* MasterViewController.m in Sources */,
 				9FAAF4F91CCE56AD00E65C6B /* main.m in Sources */,
 				9FAAF5021CCE56AD00E65C6B /* DetailViewController.m in Sources */,
@@ -309,6 +315,7 @@
 				9FAAF5101CCE56AD00E65C6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

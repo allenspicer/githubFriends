@@ -7,11 +7,14 @@
 //
 
 #import "DetailViewController.h"
+#import "Friend.h"
 
-@interface DetailViewController () <NSURLSessionDelegate>
+@interface DetailViewController () <NSURLSessionDelegate, UITableViewDelegate, UITableViewDataSource>
 
 //NSMUTableData is specific type that can hold this information coming in
 @property NSMutableData * recievedData;
+@property IBOutlet UITableView * tableView;
+@property NSMutableArray * repoArray;
 
 
 @end
@@ -57,7 +60,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
+   // [self configureView];
+     self.repoArray = [[NSMutableArray alloc]init];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"friendIdentifier"];
+    
+    [self.view addSubview:self.tableView];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +90,7 @@
     }
 }
 
-//figure out if the download happened with or without an error
+//determine if the download happened with or without an error
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error{
 
@@ -86,10 +98,24 @@ didCompleteWithError:(nullable NSError *)error{
        //if no error, say successful
        // NSLog(@"Download Successful! %@", [self.recievedData description]);
         
-        NSDictionary * jsonResponse = [NSJSONSerialization JSONObjectWithData:self.recievedData options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@", [jsonResponse description]);
-        NSLog(@"%lu", (unsigned long)[jsonResponse count]);
-       // _numberOfRepos = [NSString stringWithFormat:@"Number of Repositories: %lu",(unsigned long)[jsonResponse count]];
+        NSArray * jsonResponse = [NSJSONSerialization JSONObjectWithData:self.recievedData options:NSJSONReadingMutableContainers error:nil];
+        self.repoArray = [jsonResponse mutableCopy];
+        
+        
+        if(self.repoArray) {
+            self.recievedData = nil;
+            [self.tableView reloadData];
+        
+        NSLog(@"%@", [self.repoArray description]);
+        
+        }
+        
+
+      //  self.numberOfReposLabel.text = [NSString stringWithFormat:@"Number of Repositories: %lu",(unsigned long)[jsonResponse count]];
+        
+        
+      // NSLog(@"%@", [jsonResponse objectForKey:@"name"]);
+      
     }
 }
 
@@ -100,6 +126,37 @@ didCompleteWithError:(nullable NSError *)error{
 }
 
 
+
+#pragma mark - Table view data source
+
+// create cell for each username to populate table
+
+//place repo name in each cell
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+   return self.repoArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendIdentifier" forIndexPath:indexPath];
+    
+    
+    cell.textLabel.text = self.repoArray[indexPath.row][@"name"];
+    
+    
+    // Configure the cell...
+    
+//    Friend *aFriend = self.[indexPath.row];
+//    cell.textLabel.text = aFriend.repoName;
+   // cell.detailTextLabel.text = aFriend.id;
+    
+    return cell;
+}
 
 
 
